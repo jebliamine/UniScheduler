@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/UniScheduler/static/css/main.db152e88.css",
+    "main.js": "/UniScheduler/static/js/main.84f5f101.js",
+    "static/js/787.28cb0dcd.chunk.js": "/UniScheduler/static/js/787.28cb0dcd.chunk.js",
+    "service-worker.js": "/UniScheduler/service-worker.js",
+    "index.html": "/UniScheduler/index.html",
+    "main.db152e88.css.map": "/UniScheduler/static/css/main.db152e88.css.map",
+    "main.84f5f101.js.map": "/UniScheduler/static/js/main.84f5f101.js.map",
+    "787.28cb0dcd.chunk.js.map": "/UniScheduler/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db152e88.css",
+    "static/js/main.84f5f101.js"
+  ]
+}
