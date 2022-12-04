@@ -15,7 +15,7 @@ function App() {
     
     <Routes>
     
-      <Route path="/" element={<Search/>}/>
+      <Route path="/UniScheduler" element={<Search/>}/>
       <Route path="/Schedule" element={<Schedule />} />
       
     </Routes>
