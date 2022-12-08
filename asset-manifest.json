@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/UniScheduler/static/css/main.db152e88.css",
-    "main.js": "/UniScheduler/static/js/main.af1da527.js",
-    "static/js/787.28cb0dcd.chunk.js": "/UniScheduler/static/js/787.28cb0dcd.chunk.js",
-    "service-worker.js": "/UniScheduler/service-worker.js",
-    "index.html": "/UniScheduler/index.html",
-    "main.db152e88.css.map": "/UniScheduler/static/css/main.db152e88.css.map",
-    "main.af1da527.js.map": "/UniScheduler/static/js/main.af1da527.js.map",
-    "787.28cb0dcd.chunk.js.map": "/UniScheduler/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/static/css/main.db152e88.css",
+    "main.js": "/static/js/main.48e6cd67.js",
+    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
+    "service-worker.js": "/service-worker.js",
+    "index.html": "/index.html",
+    "main.db152e88.css.map": "/static/css/main.db152e88.css.map",
+    "main.48e6cd67.js.map": "/static/js/main.48e6cd67.js.map",
+    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.db152e88.css",
-    "static/js/main.af1da527.js"
+    "static/js/main.48e6cd67.js"
   ]
 }
