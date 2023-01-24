@@ -70,3 +70,52 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+
+
+const version = 'v1/';
+const assets = [
+  '/',
+  './public/index.html',
+  './public/logo192.png',
+  './public/logo512.png',
+  './public/maska192.png',
+  './public/config.js',
+  'logo.svg',
+  '/app.js',
+  '/app.css',
+  '/hera.css',
+  '/components/home.js',
+  '/components/schedule.js',
+  '/components/treeview.js',
+  '/components/Search.js',
+  '/components/Roomnotfound.js',
+
+];
+
+self.addEventListener('install', (event) => {
+  self.skipWaiting();
+  
+  event.waitUntil(
+    caches
+      .open(version + 'assets')
+      .then((cache) => cache.addAll(assets)),
+  );
+});
+
+self.addEventListener('activate',evt=>{
+
+  evt.waitUntil(
+    caches.keys().then(keys=>{
+      console.log(keys);
+    })
+  )
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then(cacheRes =>{
+      
+      return cacheRes || fetch(event.request);
+    })
+  )
+});

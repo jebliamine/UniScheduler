@@ -1,90 +1,103 @@
 import 'react-datalist-input/dist/styles.css';
-import {useLiveQuery} from 'dexie-react-hooks'
-import {db} from './Crud'
-import { Navigate, useNavigate} from "react-router-dom";
-import React, { useState } from "react";
-
-class Welcome extends React.Component {
-
-
-    render() {
-      return <h1>Hello, {this.props.name}</h1>;
-      
-    }
-  }
-
-  
-
-
+import {useNavigate} from "react-router-dom";
+import React, { useState , useEffect} from "react";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'react-datalist-input/dist/styles.css';
+import { FirebaseApp } from '../firebase/Index';
 
   export var pressed = false;
 
 
-
-
  function Search(data) {
+
+  // #####################################################################################
   const [selectedRoom,setSelectedRoom] = useState("");
+  const [selectedRoomid,setSelectedRoomid] = useState("");
+  const [Roomes, setRoomes] = useState([])
 
  let history = useNavigate();
-    
-  const handleSubmit = e => {
-   e.preventDefault();
-   e.stopPropagation();
-  const id = e.target.value;
 
-  
-   <Navigate
-            to={{
-            pathname: "/Schedule",
-          }}
-        />
+ // getting rooms data from the data base :
+  useEffect(() => {
+  var  roomdata = FirebaseApp.firestore()
+  const Rooms = [];
+  const unsubscribe  = roomdata.collection('Rooms').get().then(snapshot=>{
+    snapshot.forEach(doc=>{
+     Rooms.push({ key: doc.id, Roomes: doc.data() })
+    })
+    setRoomes(Rooms)
+  })
+
+}, [])
+
+
+
+  // handlig submit searching  
+  const handleSubmit = e => {
+    
+    e.preventDefault();
+    e.stopPropagation();
+    if(selectedRoom != null){
+      history("/Schedule", {
+        state: { ida: selectedRoom,
+                 ido:  selectedRoomid,
+        }
+      });
+    }
   };
  
-  const handleChange= e => {
-    e.preventDefault();
-   e.stopPropagation();
-   var id = e.target.value;
-    console.log(id)
+  const handleChange= (event, key) => {
+    event.preventDefault();
+    event.stopPropagation();
+   
+    var value = Roomes.filter(function(item) {
+      return item.Roomes.RoomName ===event.target.value
+    })
+
+
+   var id = event.target.value;
    setSelectedRoom(id);
-   history({
-    pathname: "/Schedule",
-    state: { selectedRoom: "deijd" }
-  })
+  if(value.length!= 0 ){
+   setSelectedRoomid(value[0].key);
+  }
+   
+   
+
   } 
 
-// ######################################################################################################### rturn search barlist ###########################
-  
-  const allItems = useLiveQuery(() => db.room.toArray(), []);
-  if (!allItems) return null
-  
+// ##################################################################### return search barlist ########################### 
 
 
- const itemData = (
+  // if (!allItems) return null
+  
+  const itemData = (
     <div className="App">
-      <input type="text" list="data"  value={selectedRoom} onChange={handleChange}/>
+      <input type="text" list="data" value={selectedRoom} onChange={handleChange}/>
       <datalist id="data">
         { 
-        allItems.map(({ id, name})=>(
-        <option className="id" key={id} value={name} />
-        ))
+        Roomes.map(({ key ,Roomes})=>(
+          <option className="id" key={key}  value={Roomes.RoomName}/>
+         ))
       }
     </datalist>
   </div>
  )
-
     return (
       
       <div className="container">
-      <h3 className="green-text center-align">Rooms Searching</h3>
+      <h3 className="green-text center-align">Suche nach Räumen</h3>
      
-      {allItems.length > 0 &&
-        <div className="card white darken-1">
-          <div className="card-content">
-            <form onSubmit={handleSubmit}>
+      {/* {allItems.length > 0 && */
+        <div >
+          
+          <Form onSubmit={handleSubmit}>
               { itemData }
-              <button type="submit" >Search</button>
-            </form>
-          </div>
+              <Button variant="primary" type="submit">Suche</Button>
+            </Form>
+          
+          
         </div>
       }
     </div>
