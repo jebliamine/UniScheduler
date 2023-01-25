@@ -61,6 +61,7 @@ function App() {
       <Route path="/Schedule" element={<Schedule />} />
       <Route path="/Hera" element={<MultiSelectTreeView />} />
       <Route path="/home" element={<Home/>} />
+      <Route path="/" element={<Home/>} />
       
     </Routes>
   

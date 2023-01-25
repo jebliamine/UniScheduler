@@ -14,15 +14,27 @@ const getDeviceType = () => {
   };
 
  export function mobile() {
-    const schedji = document.getElementsByClassName("MainLayout-stickyElement MainLayout-header MainLayout-flexRow");
+  console.log("10sdss0")
+    const schedji = document.getElementsByClassName("MainLayout-stickyElement MainLayout-header MainLayout-flexRow");   
+    const toolbar2 = document.getElementsByClassName("MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular Toolbar-toolbar css-1b7ni76-MuiToolbar-root"); 
     console.log("10sdss1")
 if (getDeviceType()=="mobile"){
   console.log("10sdss2")
     for (var i = 0; i < schedji.length; i++) {
      
     schedji[i].style.height = "10%"; 
- }}
+ }
+
+ for (var i = 0; i < toolbar2.length; i++) {
+     
+  toolbar2[i].style.height = "10%"; 
+}
+
+
+
+}
  
+
 
   };
  

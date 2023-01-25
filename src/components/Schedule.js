@@ -9,6 +9,7 @@ import '../style.css'
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import classNames from 'clsx';
+import { mobile } from './Mobileconfig';
 import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded';
 import { Notfound } from './Roomnotfound';
 // updating the data base
@@ -227,14 +228,14 @@ function Schedule(props){
    
     //  the resulting vew after extracting the data 
     if(roomfound=== false){
- 
+      mobile()
       
     return(
   
       <div id='schdjule-view'>
           
           
-
+          
             <Scheduler   data={Datarray}
              onClick={doubleClickaction}
              locale={'de-GR'}
@@ -264,7 +265,7 @@ function Schedule(props){
                 <Resources
           data={resources}
         />
-
+       
         
         </Scheduler>
 

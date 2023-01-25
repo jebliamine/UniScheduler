@@ -75,6 +75,7 @@ self.addEventListener('message', (event) => {
 const version = 'v1/';
 const assets = [
   '/',
+  'https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   './public/index.html',
   './public/logo192.png',
   './public/logo512.png',
